@@ -1,3 +1,4 @@
 # Comprehensive-practice
 软件工程综合大实习
 文件夹finall是第一次迭代的部分内容，包含登录注册注销的后端处理
+文件夹school_service是前端的提交，第一次提交包括系统的主界面，另外实现的二手交易功能界面
