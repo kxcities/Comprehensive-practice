@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.demo.serviceInterface.CommentInterface">
+	<resultMap type = "CommentItem" id = "commentItemMap">
+		<id column = "c_id" property ="commentId"/>
+		<result column = "c_goodId" property = "goodsId"/>
+		<result column = "c_name" property = "commentName"/>
+		<result column = "c_word" property = "commentWord"/>
+		<result column = "c_creatTime" property = "createTime"/>
+		<association property="replies" column ="c_id" select = "replyFindById"></association>
+	</resultMap>
+	<resultMap type = "ReplyItem" id = "replyItemMap">
+	 <result column ="r_cId" property = "commentId" />
+	 <result column = "r_name" property = "replyName"/>
+	 <result column = "r_word" property = "replyWord"/>
+	 <result column = "r_createTime" property = "replyTime"/>
+	</resultMap>
+	<insert id="commentUpload">
+		INSERT INTO comment 
+		(c_id, c_goodId,c_name, c_word)
+		VALUES(#{commentId}, #{goodsId}, #{commentName}, #{commentWord});
+	</insert>
+	<select id="commentDownload" resultMap = "commentItemMap">
+		SELECT c_id ,c_goodId, c_name, c_word, c_createTime
+		FROM comment
+		WHERE c_goodId = #{param1}
+		ORDER BY c_createTime DESC
+		LIMIT #{param2}, #{param3};
+	</select>
+	<select id= "replyFindById" resultMap = "replyItemMap">
+		SELECT r_cId, r_name, r_word, r_createTime
+		FROM reply
+		WHERE r_cId = #{commentId}
+		ORDER BY r_createTime DESC;
+	</select>
+	<insert id = "commentReplyUpload">
+		INSERT INTO reply 
+		(r_cId, r_name, r_word)
+		VALUES (#{param1}, #{param2}, #{param3});
+	</insert>
+</mapper>
