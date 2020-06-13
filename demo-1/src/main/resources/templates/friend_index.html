@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>走心交友</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+<div class="navbar navbar-default">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="friend_index">Everyone is friend</a>
+        </div>
+        <div class="hidden-xs">
+            <div class="col-sm-offset-2">
+                <ul class="nav navbar-nav navbar-list">
+                    <li><a href="#">全部分类</a></li>
+                    <li><a href="#">校园交友</a></li>
+                    <li><a href="#">生活分享</a></li>
+                    <li><a href="#">情感倾诉</a></li>
+                </ul>
+            </div>
+            <ul class="nav navbar-nav navbar-right">
+            	<li><a href="friend_upload" target="_self" rel="noopener noreferrer">图文发布</a></li>
+		        <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false" style="margin-right: 25px;">
+                        <span class="hello">Welcome!</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-2 hidden-xs">
+            <div class="list-group side-bar">
+                <a class="list-group-item active" role="button">刚刚<span class="badge badge-primary badge-pill">3</span></a>
+                <a class="list-group-item" role="button">一天前<span class="badge badge-primary badge-pill">1</span></a>
+                <a class="list-group-item" role="button">两天前<span class="badge badge-primary badge-pill">0</span></a>
+                <a class="list-group-item" role="button">三天前<span class="badge badge-primary badge-pill">0</span></a>
+                <a class="list-group-item" role="button">一周前<span class="badge badge-primary badge-pill">0</span></a>
+                <a class="list-group-item" role="button">一个月<span class="badge badge-primary badge-pill">0</span></a>
+            </div>
+        </div>
+
+        <div class="col-sm-7">
+            <div class="blog-list">
+                <div class="blog-list-item clearfix">
+                    <div class="col-xs-5">
+                        <img src="img/mountain.jpg">
+                    </div>
+                    <div class="col-xs-7">
+                        <a href="friend_page1" class="title">
+                             今天去爬山了，给大家分享一下景色
+                        </a>
+                        <div class="info">
+                            <span class="avatar"><img src="img/user.png"
+                                                      alt="avatar"></span>
+                            <span>user</span> |
+                            <span>2.8K</span>
+                            <span class="glyphicon glyphicon-thumbs-up blog-hot" aria-hidden="true"></span> |
+                            <span>5分钟前</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="blog-list-item clearfix">
+                    <div class="col-xs-5">
+                        <img src="img/luxun.jpg">
+                    </div>
+                    <div class="col-xs-7">
+                        <a href="friend_page2" class="title">
+                            读了一本书，摘抄了一些句子——鲁迅 《热风·随感录四十一》
+                        </a>
+                        <div class="info">
+                            <span class="avatar"><img src="img/user.png"
+                                                      alt="avatar"></span>
+                            <span>user</span> |
+                            <span>2.6K热度</span> |
+                            <span>6分钟前</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="blog-list-item clearfix">
+                    <div class="col-xs-5">
+                        <img src="img/sun.jpg">
+                    </div>
+                    <div class="col-xs-7">
+                        <a href="friend_page3" class="title">
+                            大学生活中难得抽出这样一天的惬意啊
+                        </a>
+                        <div class="info">
+                            <span class="avatar"><img src="img/user.png"
+                                                      alt="avatar"></span>
+                            <span>user</span> |
+                            <span>3.8K热度</span> |
+                            <span>10分钟前</span>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+        </div>
+
+        <div class="col-sm-3 hidden-xs">
+            <div class="search-bar">
+                <form role="form">
+                    <div class="form-group has-feedback">
+                        <label class="sr-only" for="Search">Search：</label>
+                        <input type="search" class="form-control" placeholder="搜索" id="Search">
+                        <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                    </div>
+                </form>
+            </div>
+            <div class="side-bar-card side-bar-recommend clearfix">
+                <div class="side-bar-title">热点推荐</div>
+                <div class="side-bar-body">
+                    <div class="side-bar-list">
+                        <div class="side-bar-item">
+                            <a href="blog.html" class="side-item-title">找一个考研小伙伴</a>
+                            <div class="side-item-info">10.4k阅读 | 五天前</div>
+                        </div>                                             
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  	<script src="js/jquery-3.3.1.min.js"></script>
+  	<!-- Include all compiled plugins (below), or include individual files as needed -->
+  	<script src="js/bootstrap.min.js"></script>
+</body>
+</html>

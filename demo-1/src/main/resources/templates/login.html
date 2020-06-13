@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<meta name="referrer" content="no-referrer" />
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>登陆界面</title>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="css/bootstrap.min.css"/>
+    <!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+    <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+    <link href="css/signin.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <form class="form-signin" action="">
+        <h2 class="form-signin-heading">Please sign in</h2>
+        <label for="username" class="sr-only">Username</label>
+        <input type="username" id="U_keyword" name="U_keyword" class="form-control" placeholder="Username" required autofocus>
+        <label for="password" class="sr-only">Password</label>
+        <input type="password" id="U_password" name="U_password" class="form-control" placeholder="Password" required>
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" value="remember-me"> Remember me
+            </label>
+        </div>
+        <button class="btn btn-lg btn-primary btn-block" type="button" onclick="login()">Sign in</button>
+        <span><a href="/register" class="register">重新注册一个用户</a></span>
+    </form>
+</div> <!-- /container -->
+<script src="js/jquery-3.3.1.min.js"></script>
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="js/bootstrap.min.js"></script>
+<script type="text/javascript">
+	function login()
+ {
+	var U_keyword = document.getElementById("U_keyword").value;	
+ 	var U_password = document.getElementById("U_password").value;
+ 	var data = {"U_keyword":U_keyword,"U_password":U_password};
+    $.ajax
+    ({
+    	url: "http://localhost:8080/login/loginService",
+    	dataType: "json",
+		type: "POST",
+		data: JSON.stringify(data),
+		contentType : "application/json;charset=UTF-8",
+		success: function(res) {
+		     if (res.data.result!="success") {
+		         alert(res.data.result);
+		 		 alert("用户名与密码不匹配，请重新登录或注册新账号");
+		 		 window.location.href="/register";
+		     } else {
+			 	 alert(res.data.result);
+			 	 window.parent.window.location.reload();
+		         window.location.href="/index_";
+		     }
+		},
+    });
+ }
+</script>
+<script>
+   sessionStorage.setItem('USER_NAME',document.getElementById("username").innerHTML);
+</script>
+</body>
+</html>

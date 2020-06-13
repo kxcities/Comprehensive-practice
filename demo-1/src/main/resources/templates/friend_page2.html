@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>走心交友</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+<div class="navbar navbar-default">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="friend_index">Everyone is friend</a>
+        </div>
+        <label class="toggle-label visible-xs-inline-block" for="toggle-checkbox">MENU</label>
+        <input class="hidden" id="toggle-checkbox" type="checkbox">
+        <div class="hidden-xs">
+            <div class="col-sm-offset-2">
+                <ul class="nav navbar-nav navbar-list">
+                    <li><a href="#">全部分类</a></li>
+                    <li><a href="#">校园交友</a></li>
+                    <li><a href="#">生活分享</a></li>
+                    <li><a href="#">情感倾诉</a></li>
+                </ul>
+            </div>
+            <ul class="nav navbar-nav navbar-right">
+		        <li><a href="register" target="_self" rel="noopener noreferrer">注册</a></li>
+		        <li><a data-toggle="modal" data-target="#login" href=""><span class="glyphicon glyphicon-log-in"></span> 登录</a></li>
+            </ul>
+            <!-- 登录窗口 -->
+		    <div id="login" class="modal fade">
+		        <div class="modal-dialog">
+		            <div class="modal-content">
+		                <div class="modal-body">
+		                    <button class="close" data-dismiss="modal">
+		                        <span>×</span>
+		                    </button>
+		                </div>
+		                <div class="modal-title">
+		                    <h1 class="text-center">登录</h1>
+		                </div>
+		                <div class="modal-body">
+		                    <form class="form-group" action="">
+		                            <div class="form-group">
+		                                <label for="">用户名</label>
+		                                <input class="form-control" type="text" placeholder="">
+		                            </div>
+		                            <div class="form-group">
+		                                <label for="">密码</label>
+		                                <input class="form-control" type="password" placeholder="">
+		                            </div>
+		                            <div class="text-right">
+		                                <button class="btn btn-primary" type="submit">登录</button>
+		                                <button class="btn btn-danger" data-dismiss="modal">取消</button>
+		                            </div>
+		                            <a href="register" target="_self" rel="noopener noreferrer">还没有账号？点我注册</a>
+		                    </form>
+		                </div>
+		            </div>
+		        </div>
+		    </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="col-sm-8">
+        <h1 class="blog-title">读了一本书，摘抄了一些句子——鲁迅 《热风·随感录四十一》</h1>
+        <div class="blog-info">
+            <span class="avatar"><img src="img/user.png" alt="avatar"></span>
+            <span>user</span> |
+            <span>2.8K热度</span> |
+            <span>5分钟前</span>
+            <label class="label label-info">校园服务</label>
+            <label class="label label-warning">走心交友</label>
+            <label class="label label-success">生活分享</label>
+        </div>
+        <div class="blog-content">
+            <blockquote>
+                <p>生活分享，记录点滴</p>
+            </blockquote>
+            <img src="img/luxun.jpg">
+            愿中国青年都摆脱冷气，只是向上走，不必听自暴自弃者流的话。能做事的做事，能发声的发声。
+            有一分热，发一分光，就令萤火一般，也可以在黑暗里发2113一点光，不必等候炬火。
+            此后如竟没有炬火：我便是唯一的光。
+        </div>
+    </div>
+    <div class="col-sm-4 hidden-xs">
+        <div class="search-bar">
+            <form role="form">
+                <div class="form-group has-feedback">
+                    <label class="sr-only" for="Search">Search：</label>
+                    <input type="search" class="form-control" placeholder="搜索" id="Search">
+                    <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                </div>
+            </form>
+        </div>
+        <div class="side-bar-card side-bar-recommend clearfix">
+            <div class="side-bar-title">热点推荐</div>
+            <div class="side-bar-body">
+                <div class="side-bar-list">
+                    <div class="side-bar-item">
+                        <a href="blog.html" class="side-item-title">找一个考研小伙伴</a>
+                        <div class="side-item-info">10.4k阅读 | 五天前</div>
+                    </div>                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <address class="text-center">
+        <p>校园服务系统——走心交友</p>
+        <a href="#">返回顶部</a>
+    </address>
+</div>
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  	<script src="js/jquery-3.3.1.min.js"></script>
+  	<!-- Include all compiled plugins (below), or include individual files as needed -->
+  	<script src="js/bootstrap.min.js"></script>
+</body>
+</html>

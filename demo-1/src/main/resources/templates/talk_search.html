@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			body{
+				background: #f5f5f5;
+			}
+			.item{
+				width: 100%;
+				padding: 10px;
+				box-sizing: border-box;
+				background: #fff;
+				border-bottom: 1px solid #e5e5e5;
+				margin-bottom: 10px;
+			}
+			.item .item-title{
+				font-size: 16px;
+				line-height: 24px;
+			}
+			.item .item-content{
+				color: #9D9D9D;
+				margin-right: 20px;
+			}
+		</style>
+	</head>
+	
+	<body>
+		<!--页面容器-->
+		<div id="container">
+			<!--每个条目-->
+			<div class="item">
+				<div class="item-title">作业名字</div>
+				<div>
+					<span class="item-content">创建时间</span>
+					<span class="item-content">发布老师</span>
+				</div>
+			</div>
+		</div>
+	<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+	<script>
+		
+		var data = {"T_block":"宿舍"};
+	    $.ajax
+	    ({
+	    	url: "http://localhost:8080/gossip/gossipBlockSearch",
+	    	dataType: "json",
+			type: "POST",
+			data: JSON.stringify(data),
+			contentType : "application/json;charset=UTF-8",
+		    //请求成功的处理
+		    success:function(data){
+		        console.log(data);
+		        //获取需要的数据
+		        var group = data.content;
+		        
+		        //拼接字符串
+			    var str = '';
+			    //对数据做遍历，拼接到页面显示
+		        for(var i=0;i<group.length;i++){
+			        str += '<div class="item">'+
+			        	   	'<div class="item-title">'+ group[i].name +'</div>'+
+			        	   '</div>';
+		        }
+		        //放入页面的容器显示
+		        $('#container').html(str);
+		        
+		    },
+		    //请求失败的处理
+		    error:function(jqXHR){
+		        console.log(jqXHR);
+		    }
+		});
+		
+	</script>
+		
+	</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>发布信息</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+    <link href="css/friend_upload.css" rel="stylesheet">
+</head>
+<body>
+  	<header>
+  	<div class="navbar navbar-default">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="friend_index">发布</a>
+        </div>
+        <div class="hidden-xs">
+            <ul class="nav navbar-nav navbar-right">
+           	    <li><a href="free_talk" target="_blank" class="website_icon">首页</a></li>
+  			    <li><a href="personal_info" class="set_icon">账号信息</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false" style="margin-right: 25px;">
+                        <span class="hello">Welcome!</span>
+                    </a>
+                </li>
+            </ul>  
+        </div>
+    </div>
+	</div>
+	</header>
+	<div class="container">
+    <form class="form-signin" action="">
+    	<div class="public-nav">您当前的位置：<a href="">发布信息</a>></div>
+        <h2 class="form-signin-heading">请填写图文内容</h2>
+        <label for="text" class="sr-only">文章内容</label>
+        <input type="text" id="A_text" name="A_text" class="form-control" placeholder="文章内容" required>
+        
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" value="remember-me"> 确认无误
+            </label>
+        </div>
+        <button class="btn btn-lg btn-primary btn-block" type="button" onclick="login()">上传</button>
+        <span><a href="/#" class="register">退出</a></span>
+    </form>
+</div> <!-- /container -->
+</body>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  	<script src="js/jquery-3.3.1.min.js"></script>
+  	<!-- Include all compiled plugins (below), or include individual files as needed -->
+  	<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.min.js"></script>
+<script type="text/javascript">
+	function login()
+ {
+	var A_text = document.getElementById("A_text").value;	
+ 	var A_url = document.getElementById("A_url").value;
+ 	var data = {"T_block":T_block,"T_text":T_text};
+    $.ajax
+    ({
+    	url: "http://localhost:8080/gossip/gossipUpload",
+    	dataType: "json",
+		type: "POST",
+		data: JSON.stringify(data),
+		contentType : "application/json;charset=UTF-8",
+		success: function(res) {
+		     if (res.data.result!="success") {
+		         alert(res.data.result);
+		 		 alert("吐槽信息上传失败，请重新输入");
+		 		 window.location.href="/talk_upload";
+		     } else {
+			 	 alert(res.data.result);
+			 	 window.parent.window.location.reload();
+		         window.location.href="/free_talk";
+		     }
+		},
+    });
+ }
+</script>
+</html>
