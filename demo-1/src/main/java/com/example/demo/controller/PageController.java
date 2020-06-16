@@ -17,23 +17,23 @@ public class PageController extends BaseController {
 		return "login";
 	}
 	@RequestMapping(value="/register")
-	public String returnIndex() {
+	public String register() {
 		return "register";
 	}
 	@RequestMapping(value="/second_hand")
-	public String returnIndex1() {
+	public String second_hand() {
 		return "second_hand";
 	}
 	@RequestMapping(value="/upload_goods")
-	public String returnIndex2() {
+	public String upload_goods() {
 		return "upload_goods";
 	}
 	@RequestMapping(value="/shop_car")
-	public String returnIndex3() {
+	public String shop_car() {
 		return "shop_car";
 	}
 	@RequestMapping(value="/friend_index")
-	public String returnIndex4() {
+	public String friend_index() {
 		return "friend_index";
 	}
 	@RequestMapping(value="/friend_upload")
@@ -41,15 +41,15 @@ public class PageController extends BaseController {
 		return "friend_upload";
 	}
 	@RequestMapping(value="/friend_page1")
-	public String returnIndex5() {
+	public String friend_page1() {
 		return "friend_page1";
 	}
 	@RequestMapping(value="/friend_page2")
-	public String returnIndex6() {
+	public String friend_page2() {
 		return "friend_page2";
 	}
 	@RequestMapping(value="/friend_page3")
-	public String returnIndex7() {
+	public String friend_page3() {
 		return "friend_page3";
 	}
 	@RequestMapping(value="/notify")
@@ -57,16 +57,28 @@ public class PageController extends BaseController {
 		return "notify";
 	}
 	@RequestMapping(value="/feedback")
-	public String returnIndex9() {
+	public String feedback() {
 		return "feedback";
 	}
 	@RequestMapping(value="/search_book")
-	public String returnIndex10() {
+	public String search_book() {
 		return "search_book";
 	}
-	@RequestMapping(value="/free_talk")
-	public String returnIndex11() {
-		return "free_talk";
+	@RequestMapping(value="/talk_index")
+	public String talk_index() {
+		return "talk_index";
+	}
+	@RequestMapping(value="/talk_page1")
+	public String talk_page1() {
+		return "talk_page1";
+	}
+	@RequestMapping(value="/talk_page2")
+	public String talk_page2() {
+		return "talk_page2";
+	}
+	@RequestMapping(value="/talk_page3")
+	public String talk_page3() {
+		return "talk_page3";
 	}
 	@RequestMapping(value="/talk_upload")
 	public String talk_upload() {
@@ -75,5 +87,9 @@ public class PageController extends BaseController {
 	@RequestMapping(value="/talk_search")
 	public String talk_search() {
 		return "talk_search";
+	}
+	@RequestMapping(value="/personal_info")
+	public String personal_info() {
+		return "personal_info";
 	}
 }

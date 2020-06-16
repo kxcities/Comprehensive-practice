@@ -1,47 +1,40 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="UTF-8">
-		<title></title>
-		<style>
-			body{
-				background: #f5f5f5;
-			}
-			.item{
-				width: 100%;
-				padding: 10px;
-				box-sizing: border-box;
-				background: #fff;
-				border-bottom: 1px solid #e5e5e5;
-				margin-bottom: 10px;
-			}
-			.item .item-title{
-				font-size: 16px;
-				line-height: 24px;
-			}
-			.item .item-content{
-				color: #9D9D9D;
-				margin-right: 20px;
-			}
-		</style>
-	</head>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>搜索信息</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+    <link href="css/talk_search.css" rel="stylesheet">
+</head>
 	
 	<body>
+	<div class="navbar navbar-default">
+				<form class="navbar-form navbar-left" role="search">            
+		   			<div class="form-group">                
+		   			<label for="text" class="sr-only">填写吐槽板块</label>
+		        	<input type="text" id="T_text" name="U_keyword" class="form-control" placeholder="吐槽板块" required autofocus>  
+		   			</div>            
+		   			<button class="btn btn-lg btn-primary btn-block" type="button" onclick="search()">搜索板块</button> 
+				</form> 
+	</div>
 		<!--页面容器-->
 		<div id="container">
 			<!--每个条目-->
 			<div class="item">
-				<div class="item-title">作业名字</div>
-				<div>
-					<span class="item-content">创建时间</span>
-					<span class="item-content">发布老师</span>
-				</div>
+				<div class="item-title">搜索结果列表</div>
 			</div>
 		</div>
-	<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  	<script src="js/jquery-3.3.1.min.js"></script>
+  	<!-- Include all compiled plugins (below), or include individual files as needed -->
+  	<script src="js/bootstrap.min.js"></script>
 	<script>
-		
-		var data = {"T_block":"宿舍"};
+	function search()
+	 {
+		var T_text = document.getElementById("T_text").value;
+		var data = {"T_text":T_text};
 	    $.ajax
 	    ({
 	    	url: "http://localhost:8080/gossip/gossipBlockSearch",
@@ -53,27 +46,28 @@
 		    success:function(data){
 		        console.log(data);
 		        //获取需要的数据
-		        var group = data.content;
-		        
+		        //var group = data.content;
+		        var data = JSON.stringify(data);
 		        //拼接字符串
 			    var str = '';
 			    //对数据做遍历，拼接到页面显示
-		        for(var i=0;i<group.length;i++){
+		        //for(var i=0;i<group.length;i++){
 			        str += '<div class="item">'+
-			        	   	'<div class="item-title">'+ group[i].name +'</div>'+
+			        	   	'<div class="item-title">'+ data +'</div>'+
 			        	   '</div>';
-		        }
+		        //}
 		        //放入页面的容器显示
 		        $('#container').html(str);
-		        
+	            alert("信息提交成功");
 		    },
 		    //请求失败的处理
 		    error:function(jqXHR){
 		        console.log(jqXHR);
 		    }
 		});
-		
+	 }	
 	</script>
 		
 	</body>
+	
 </html>

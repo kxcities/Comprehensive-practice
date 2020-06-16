@@ -36,7 +36,9 @@
         <h2 class="form-signin-heading">请填写图文内容</h2>
         <label for="text" class="sr-only">文章内容</label>
         <input type="text" id="A_text" name="A_text" class="form-control" placeholder="文章内容" required>
-        
+        <label for="text" class="sr-only">文章图片</label>
+        <input type="file" name="" id="chooseImage" accept=".jpg,.jpeg,.png">
+    	<img id="showImg" src="">
         <div class="checkbox">
             <label>
                 <input type="checkbox" value="remember-me"> 确认无误
@@ -53,11 +55,33 @@
   	<script src="js/bootstrap.min.js"></script>
 <script src="js/jquery.min.js"></script>
 <script type="text/javascript">
+$('#chooseImage').on('change',function(e){
+      // 检查是否是图片
+      var filePath = $(this).val(),
+      fileFormat = filePath.substring(filePath.lastIndexOf(".")).toLowerCase();//获取文件后缀名
+      //检查后缀名
+      if( !fileFormat.match(/.png|.jpg|.jpeg/) ) {
+            showError('文件格式必须为：png/jpg/jpeg');//showError是另外写的一个显示错误信息的function
+            return;  
+      }
+
+      //获取并记录图片的base64编码
+      var reader = new FileReader();
+      reader.readAsDataURL(e.target.files[0]); // 读出 base64
+      reader.onloadend = function () {
+      // 图片的 base64 格式, 可以直接当成 img 的 src 属性值        
+      var dataURL = reader.result;//base64
+      // 显示图片
+      $('#showImg').attr('src',dataURL);
+      };
+});
+</script>
+<script type="text/javascript">
 	function login()
- {
+ {     
 	var A_text = document.getElementById("A_text").value;	
- 	var A_url = document.getElementById("A_url").value;
- 	var data = {"T_block":T_block,"T_text":T_text};
+ 	var A_url = document.getElementById("chooseImage").value;
+ 	var data = {"A_text":A_text,"A_url":A_url};
     $.ajax
     ({
     	url: "http://localhost:8080/gossip/gossipUpload",
