@@ -80,11 +80,11 @@ $('#chooseImage').on('change',function(e){
 	function login()
  {     
 	var A_text = document.getElementById("A_text").value;	
- 	var A_url = document.getElementById("chooseImage").value;
+ 	var A_url = document.getElementById("showImg").value;
  	var data = {"A_text":A_text,"A_url":A_url};
     $.ajax
     ({
-    	url: "http://localhost:8080/gossip/gossipUpload",
+    	url: "http://localhost:8080/home/life/lifeUpload",
     	dataType: "json",
 		type: "POST",
 		data: JSON.stringify(data),
@@ -93,11 +93,11 @@ $('#chooseImage').on('change',function(e){
 		     if (res.data.result!="success") {
 		         alert(res.data.result);
 		 		 alert("吐槽信息上传失败，请重新输入");
-		 		 window.location.href="/talk_upload";
+		 		 window.location.href="/friend_upload";
 		     } else {
 			 	 alert(res.data.result);
 			 	 window.parent.window.location.reload();
-		         window.location.href="/free_talk";
+		         window.location.href="/friend_index";
 		     }
 		},
     });

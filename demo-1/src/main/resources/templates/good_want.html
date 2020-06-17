@@ -10,20 +10,11 @@
 </head>
 	
 	<body>
-	<div class="navbar navbar-default">
-				<form class="navbar-form navbar-left" role="search">            
-		   			<div class="form-group">                
-		   			<label for="text" class="sr-only">填写吐槽板块</label>
-		        	<input type="text" id="T_text" name="U_keyword" class="form-control" placeholder="吐槽板块" required autofocus>  
-		   			</div>            
-		   			<button class="btn btn-lg btn-primary btn-block" type="button" onclick="search()">搜索板块</button> 
-				</form> 
-	</div>
 		<!--页面容器-->
 		<div id="container">
 			<!--每个条目-->
 			<div class="item">
-				<div class="item-title">搜索结果列表</div>
+				<div class="item-title">约定交易列表</div>
 			</div>
 		</div>
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -33,11 +24,22 @@
 	<script type="text/javascript">
 	function search()
 	 {
-		var T_text = document.getElementById("T_text").value;
-		var data = {"T_text":T_text};
+		function getCookie(cookieName) {
+		    var strCookie = document.cookie;
+		    var arrCookie = strCookie.split("; ");
+		    for(var i = 0; i < arrCookie.length; i++){
+		        var arr = arrCookie[i].split("=");
+		        if(cookieName == arr[0]){
+		            return arr[1];
+		        }
+		    }
+		    return "";
+		}
+		var user_id = getCookie("username");//拿到名字为username的cookie值
+		var data = {"loginUser":user_id};
 	    $.ajax
 	    ({
-	    	url: "http://localhost:8080/gossip/gossipBlockSearch",
+	    	url: "http://localhost:8080/home/trade/runningDeals",
 	    	dataType: "json",
 			type: "POST",
 			data: JSON.stringify(data),

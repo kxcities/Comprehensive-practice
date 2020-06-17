@@ -28,6 +28,14 @@ public class PageController extends BaseController {
 	public String upload_goods() {
 		return "upload_goods";
 	}
+	@RequestMapping(value="/search_good")
+	public String search_good() {
+		return "search_good";
+	}
+	@RequestMapping(value="/good_want")
+	public String good_want() {
+		return "good_want";
+	}
 	@RequestMapping(value="/shop_car")
 	public String shop_car() {
 		return "shop_car";

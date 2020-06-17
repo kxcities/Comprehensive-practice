@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>搜索信息</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+    <link href="css/talk_search.css" rel="stylesheet">
+</head>
+	
+	<body>
+	<div class="navbar navbar-default">
+				<form class="navbar-form navbar-left" role="search">            
+		   			<div class="form-group">                
+		   			<label for="text" class="sr-only">填写商品标题</label>
+		        	<input type="text" id="P_title" name="U_keyword" class="form-control" placeholder="按标题搜索" required autofocus>  
+		        	<label for="text" class="sr-only">填写商品区域</label>
+		        	<input type="text" id="P_area" name="U_keyword" class="form-control" placeholder="按区域搜索" required autofocus>
+		        	<label for="text" class="sr-only">填写价格区间</label>
+		        	<input type="text" id="P_minprice" name="U_keyword" class="form-control" placeholder="价格最小值" required autofocus>
+		        	<input type="text" id="P_maxprice" name="U_keyword" class="form-control" placeholder="价格最大值" required autofocus>
+		        	<label for="text" class="sr-only">填写商品标签</label>
+		        	<input type="text" id="P_tag" name="U_keyword" class="form-control" placeholder="按标签搜索" required autofocus>
+		   			</div>            
+		   			<button class="btn btn-lg btn-primary btn-block" type="button" onclick="search1()">搜索标题</button>
+		   			<button class="btn btn-lg btn-primary btn-block" type="button" onclick="search2()">搜索区域</button>
+		   			<button class="btn btn-lg btn-primary btn-block" type="button" onclick="search3()">搜索价格</button>
+		   			<button class="btn btn-lg btn-primary btn-block" type="button" onclick="search4()">搜索标签</button>
+				</form> 
+	</div>
+		<!--页面容器-->
+		<div id="container">
+			<!--每个条目-->
+			<div class="item">
+				<div class="item-title">搜索结果列表</div>
+			</div>
+		</div>
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  	<script src="js/jquery-3.3.1.min.js"></script>
+  	<!-- Include all compiled plugins (below), or include individual files as needed -->
+  	<script src="js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+	function search1()
+	 {
+		var Search_title = document.getElementById("P_title").value;
+		var data = {"Search_title":Search_title};
+	    $.ajax
+	    ({
+	    	url: "http://localhost:8080/home/trade/goodsTitleSearch",
+	    	dataType: "json",
+			type: "POST",
+			data: JSON.stringify(data),
+			contentType : "application/json;charset=UTF-8",
+		    //请求成功的处理
+		    success:function(data){
+		        console.log(data);
+		        //获取需要的数据
+		        //var group = data.content;
+		        var data = JSON.stringify(data);
+		        //拼接字符串
+			    var str = '';
+			    //对数据做遍历，拼接到页面显示
+		        //for(var i=0;i<group.length;i++){
+			        str += '<div class="item">'+
+			        	   	'<div class="item-title">'+ data +'</div>'+
+			        	   '</div>';
+		        //}
+		        //放入页面的容器显示
+		        $('#container').html(str);
+	            alert("信息提交成功");
+		    },
+		    //请求失败的处理
+		    error:function(jqXHR){
+		        console.log(jqXHR);
+		    }
+		});
+	 }	
+	</script>
+	<script type="text/javascript">
+	function search2()
+	 {
+		var F_area = document.getElementById("P_area").value;
+		var data = {"F_area":F_area};
+	    $.ajax
+	    ({
+	    	url: "http://localhost:8080/home/trade/goodsAreaSearch",
+	    	dataType: "json",
+			type: "POST",
+			data: JSON.stringify(data),
+			contentType : "application/json;charset=UTF-8",
+		    //请求成功的处理
+		    success:function(data){
+		        console.log(data);
+		        //获取需要的数据
+		        //var group = data.content;
+		        var data = JSON.stringify(data);
+		        //拼接字符串
+			    var str = '';
+			    //对数据做遍历，拼接到页面显示
+		        //for(var i=0;i<group.length;i++){
+			        str += '<div class="item">'+
+			        	   	'<div class="item-title">'+ data +'</div>'+
+			        	   '</div>';
+		        //}
+		        //放入页面的容器显示
+		        $('#container').html(str);
+	            alert("信息提交成功");
+		    },
+		    //请求失败的处理
+		    error:function(jqXHR){
+		        console.log(jqXHR);
+		    }
+		});
+	 }	
+	</script>
+	<script type="text/javascript">
+	function search3()
+	 {
+		var F_minPrice = document.getElementById("P_minprice").value;
+		var F_maxPrice = document.getElementById("P_maxprice").value;
+		var data = {"F_minPrice":F_minPrice,"F_maxPrice":F_maxPrice};
+	    $.ajax
+	    ({
+	    	url: "http://localhost:8080/home/trade/goodsPriceSearch",
+	    	dataType: "json",
+			type: "POST",
+			data: JSON.stringify(data),
+			contentType : "application/json;charset=UTF-8",
+		    //请求成功的处理
+		    success:function(data){
+		        console.log(data);
+		        //获取需要的数据
+		        //var group = data.content;
+		        var data = JSON.stringify(data);
+		        //拼接字符串
+			    var str = '';
+			    //对数据做遍历，拼接到页面显示
+		        //for(var i=0;i<group.length;i++){
+			        str += '<div class="item">'+
+			        	   	'<div class="item-title">'+ data +'</div>'+
+			        	   '</div>';
+		        //}
+		        //放入页面的容器显示
+		        $('#container').html(str);
+	            alert("信息提交成功");
+		    },
+		    //请求失败的处理
+		    error:function(jqXHR){
+		        console.log(jqXHR);
+		    }
+		});
+	 }	
+	</script>
+	<script type="text/javascript">
+	function search4()
+	 {
+		var Search_tag = document.getElementById("P_tag").value;
+		var data = {"Search_tag":Search_tag};
+	    $.ajax
+	    ({
+	    	url: "http://localhost:8080/home/trade/goodsTagSearch",
+	    	dataType: "json",
+			type: "POST",
+			data: JSON.stringify(data),
+			contentType : "application/json;charset=UTF-8",
+		    //请求成功的处理
+		    success:function(data){
+		        console.log(data);
+		        //获取需要的数据
+		        //var group = data.content;
+		        var data = JSON.stringify(data);
+		        //拼接字符串
+			    var str = '';
+			    //对数据做遍历，拼接到页面显示
+		        //for(var i=0;i<group.length;i++){
+			        str += '<div class="item">'+
+			        	   	'<div class="item-title">'+ data +'</div>'+
+			        	   '</div>';
+		        //}
+		        //放入页面的容器显示
+		        $('#container').html(str);
+	            alert("信息提交成功");
+		    },
+		    //请求失败的处理
+		    error:function(jqXHR){
+		        console.log(jqXHR);
+		    }
+		});
+	 }	
+	</script>	
+	</body>
+	
+</html>
